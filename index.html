@@ -33,6 +33,9 @@
         const percentile = isNaN(z) ? "NaN" : (normCDF(z) * 100).toFixed(2);
         window.ReactNativeWebView?.postMessage(percentile);
       };
+
+document.getElementById("out").innerText = "Percentile: " + percentile;
+      
     </script>
   </body>
 </html>
