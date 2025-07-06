@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <script>
+      function normCDF(z) {
+        return (1 - Math.erf(-z / Math.sqrt(2))) / 2;
+      }
+
+      window.onload = function () {
+        const params = new URLSearchParams(window.location.search);
+        const z = parseFloat(params.get("z"));
+        if (!isNaN(z)) {
+          const percentile = normCDF(z) * 100;
+          window.ReactNativeWebView?.postMessage(percentile.toFixed(2));
+        } else {
+          window.ReactNativeWebView?.postMessage("Invalid z-score");
+        }
+      };
+    </script>
+  </body>
+</html>
